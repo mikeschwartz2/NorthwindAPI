@@ -38,6 +38,28 @@ namespace NorthwindAPI.Controllers
             string command = "select * from customers where CustomerID = @id";
             return conn.QueryFirstOrDefault<Customer>(command, new { id = id });
         }
+
+        [HttpPost]
+        public Object Post(Customer c)
+        {
+            SqlConnection connection = null;
+            string command = "INSERT INTO Customers (CustomerID, CompanyName)";
+            command += " VALUES (@CustomerID, @CompanyName);";
+            command += " SELECT SCOPE_IDENTITY();";
+
+            int newId;
+            connection = new SqlConnection(connectionString);
+
+            newId = connection.ExecuteScalar<int>(command, c);
+
+            if(newId < 0)
+            {
+                return new { newId = false };
+            }
+            return new { newId = true, id = newId };
+        }
+
+
     }
     
 }
