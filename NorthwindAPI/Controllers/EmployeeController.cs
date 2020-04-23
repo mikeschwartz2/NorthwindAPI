@@ -59,23 +59,7 @@ namespace NorthwindAPI.Controllers
             return new { newId = true, id = newId };
         }
 
-        [HttpDelete("{id}")]
-        public Object Delete(int id)
-        {
-            SqlConnection connection = new SqlConnection(connectionString);
-            string deleteCommand = "DELETE FROM Employee WHERE ID = @id;";
-
-            int result = connection.Execute(deleteCommand, new { id = id });
-
-            if (result > 0)
-            {
-                return new { success = true };
-            }
-            else
-            {
-                return new { success = false };
-            }
-        }
+        
 
 
     }
