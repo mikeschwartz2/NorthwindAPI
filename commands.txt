@@ -1,0 +1,11 @@
+List all customers: https://localhost:44394/api/Customer/
+
+Get customer by id: https://localhost:44394/api/Customer/CHOPS/
+
+List all employees: https://localhost:44394/api/employee
+
+List all orders: https://localhost:44394/api/order
+
+List orders by cust id: https://localhost:44394/api/order/CHOPS
+
+Delete Order by ID: https://localhost:44394/api/orderdetail/10248
